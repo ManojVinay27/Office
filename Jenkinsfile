@@ -84,7 +84,7 @@ pipeline {
             steps {
                 script {
                     def response = sonarutil.createGroup(permission=params.Permission, environment="dev")
-                    // def userLoginIds = sonarutil.getuserLogin(params.Users.tokenize(","))
+                    // def userLoginIds = sonarutil.getUserLogin(params.Users.tokenize(","))
                     // sonarutil.mapGroupToApplication(params.ApplicationName, groupName, params.Permission)
                     sonarutil.createTemplate(params.ProjectName)
                     sonarutil.addGroupToTemplate(templateName=params.ProjectName, userType=params.Permission)
@@ -110,4 +110,9 @@ pipeline {
                     wait: true,
                     propagate: true
 
-                    build job: "/ldap-management
+                    build job: "/ldap-management"
+                }
+            }
+        }
+    }
+}
